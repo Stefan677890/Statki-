@@ -1,0 +1,14 @@
+C:\Users\1ap\source\repos\statki\statki\bin\Debug\net8.0\statki.exe
+C:\Users\1ap\source\repos\statki\statki\bin\Debug\net8.0\statki.deps.json
+C:\Users\1ap\source\repos\statki\statki\bin\Debug\net8.0\statki.runtimeconfig.json
+C:\Users\1ap\source\repos\statki\statki\bin\Debug\net8.0\statki.dll
+C:\Users\1ap\source\repos\statki\statki\bin\Debug\net8.0\statki.pdb
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.AssemblyInfoInputs.cache
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.AssemblyInfo.cs
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.csproj.CoreCompileInputs.cache
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.dll
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\refint\statki.dll
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.pdb
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\statki.genruntimeconfig.cache
+C:\Users\1ap\source\repos\statki\statki\obj\Debug\net8.0\ref\statki.dll

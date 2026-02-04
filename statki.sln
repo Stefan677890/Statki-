@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statki", "Statki\Statki.csproj", "{C4DB3757-6D46-4501-9067-B03317D8B77C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statki", "Statki\Statki.csproj", "{20A504E5-5134-437C-A50B-522001F9717B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C4DB3757-6D46-4501-9067-B03317D8B77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4DB3757-6D46-4501-9067-B03317D8B77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4DB3757-6D46-4501-9067-B03317D8B77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4DB3757-6D46-4501-9067-B03317D8B77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A504E5-5134-437C-A50B-522001F9717B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A504E5-5134-437C-A50B-522001F9717B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A504E5-5134-437C-A50B-522001F9717B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A504E5-5134-437C-A50B-522001F9717B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {71489DF8-3422-4FE0-A244-1F7A9E0DF3AF}
+		SolutionGuid = {18842420-EBEE-4128-A859-8C28AC968AE2}
 	EndGlobalSection
 EndGlobal

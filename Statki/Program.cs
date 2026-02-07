@@ -59,6 +59,13 @@ class Program
 
                     }
 
+                    char[,] planszakomputera = new char[10, 10];
+                    for (int i = 0; i < 10; i++)
+                        for (int j = 0; j < 10; j++)
+                            planszakomputera[i, j] = '.';
+
+                     statkikomputerwszystkie(planszakomputera);
+
                     bool dobrywybor = false;
                     while (!dobrywybor)
                     {
@@ -226,7 +233,49 @@ class Program
             }
 
         }
+    }
 
+    static void statkikomputerwszystkie(char[,] plansza)
+    {
+        for (int i = 0; i < 1; i++) statkikomputer(plansza, 4);
+        for (int i = 0; i < 2; i++) statkikomputer(plansza, 3);
+        for (int i = 0; i < 3; i++) statkikomputer(plansza, 2);
+        for (int i = 0; i < 4; i++) statkikomputer(plansza, 1);
+    }
+
+    static Random statkicomputer = new Random();
+
+    static void statkikomputer(char[,] plansza, int rozmiar)
+    {
+        bool ustawiono = false;
+        while (!ustawiono)
+        {
+            bool pionowo = statkicomputer.Next(2) == 0;
+            int x = statkicomputer.Next(0, 10);
+            int y = statkicomputer.Next(0, 10);
+
+            if (pionowo && x + rozmiar > 10) continue;
+            if (!pionowo && y + rozmiar > 10) continue;
+
+            bool moze = true;
+            for (int j = 0; j < rozmiar; j++)
+            {
+                int nx = x + (pionowo ? j : 0);
+                int ny = y + (pionowo ? 0 : j);
+                if (plansza[nx, ny] != '.') { moze = false; break; }
+            }
+
+            if (moze)
+            {
+                for (int j = 0; j < rozmiar; j++)
+                {
+                    int nx = x + (pionowo ? j : 0);
+                    int ny = y + (pionowo ? 0 : j);
+                    plansza[nx, ny] = 'S';
+                }
+                ustawiono = true;
+            }
+        }
     }
 }
- 
+

@@ -17,7 +17,6 @@ class Program
         while (dziala)
 
         {
-
             Console.WriteLine("-----------------------------------------------------------------------------------------------------------------");
 
             Console.WriteLine("Wybierz jedną z opcji");
@@ -34,7 +33,6 @@ class Program
 
             Console.Write('\n');
             string wybor = Console.ReadLine()!;
-
             switch (wybor)
 
             {
@@ -64,7 +62,7 @@ class Program
                         for (int j = 0; j < 10; j++)
                             planszakomputera[i, j] = '.';
 
-                     statkikomputerwszystkie(planszakomputera);
+                    statkikomputerwszystkie(planszakomputera);
 
                     bool dobrywybor = false;
                     while (!dobrywybor)
@@ -99,9 +97,10 @@ class Program
                                     Console.WriteLine();
                                 }
 
-  
+
                                 for (int statki = 1; statki <= 4; statki++)
                                 {
+
                                     bool poprawneWspolrzedne = false;
                                     while (!poprawneWspolrzedne)
                                     {
@@ -118,14 +117,16 @@ class Program
                                             int y = kolumna - 'A';
                                             int x = wiersz - 1;
 
+                                            Console.Clear();
+
                                             if (x >= 0 && x < 10 && y >= 0 && y < 10)
                                             {
                                                 if (plansza[x, y] == '.')
                                                 {
-                                                    plansza[x, y] = 'S'; 
+                                                    plansza[x, y] = 'S';
                                                     poprawneWspolrzedne = true;
 
-                                                    
+
                                                     Console.WriteLine("     A B C D E F G H I J");
                                                     for (int i2 = 0; i2 < 10; i2++)
                                                     {
@@ -278,4 +279,3 @@ class Program
         }
     }
 }
-

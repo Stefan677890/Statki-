@@ -7,6 +7,27 @@ class Program
 {
     static void Main()
     {
+        char[,] plansza = new char[10, 10];
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                plansza[i, j] = '.';
+
+        int s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+        int wszystkies = s1 + s2 + s3 + s4;
+
+        Console.WriteLine("     A B C D E F G H I J");
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write($"{i,2} | ");
+            for (int j = 0; j < 10; j++) Console.Write(". ");
+            Console.WriteLine();
+        }
+
+        char[,] planszakomputera = new char[10, 10];
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                planszakomputera[i, j] = '.';
+
         bool dziala = true;
 
         while (dziala)
@@ -24,26 +45,6 @@ class Program
             {
                 case "1":
                     Console.Clear();
-                    char[,] plansza = new char[10, 10];
-                    for (int i = 0; i < 10; i++)
-                        for (int j = 0; j < 10; j++)
-                            plansza[i, j] = '.';
-
-                    int s1 = 0, s2 = 0, s3 = 0, s4 = 0;
-                    int wszystkies = s1 + s2 + s3 + s4;
-
-                    Console.WriteLine("     A B C D E F G H I J");
-                    for (int i = 1; i <= 10; i++)
-                    {
-                        Console.Write($"{i,2} | ");
-                        for (int j = 0; j < 10; j++) Console.Write(". ");
-                        Console.WriteLine();
-                    }
-
-                    char[,] planszakomputera = new char[10, 10];
-                    for (int i = 0; i < 10; i++)
-                        for (int j = 0; j < 10; j++)
-                            planszakomputera[i, j] = '.';
 
                     statkikomputerwszystkie(planszakomputera);
 
@@ -290,8 +291,8 @@ class Program
                                 break;
 
                                 case "5":
-                                    if (wszystkies == 0)
-                                    {
+                                if (s1 + s2 + s3 + s4 == 10)
+                                {
                                     Console.Clear();
                                     Console.WriteLine("Wybierz poziom trudności \n");
 
@@ -299,26 +300,103 @@ class Program
                                        Console.WriteLine("2. Średni");
                                        Console.WriteLine("3. Miszczu \n");
                                        string poziomtrudnosci = Console.ReadLine()!;
-                                       switch (poziomtrudnosci)
+                                       int strzalyilosci = 1;
+                                    switch (poziomtrudnosci)
                                        {
                                             case "1":
+
                                                 Console.WriteLine("Wybrałeś poziom łatwy");
+                                            strzalyilosci = 1;
                                                 break;
+
                                             case "2":
+
                                                 Console.WriteLine("Wybrałeś poziom średni");
-                                                break;
+                                            strzalyilosci = 2;
+                                            break;
+
                                             case "3":
                                                 Console.WriteLine("Wybrałeś poziom miszczu");
-                                                break;
+                                            strzalyilosci = 3;
+                                            break;
+
+
                                             default:
                                                 Console.WriteLine("Można wybrać tylko jedną z podanych opcji!!!!!!!");
                                                 break;
                                       }
 
+                                    bool trwa = true;
+                                    char[,] planszastrzalowgracza = new char[10, 10];
+                                    for (int i = 0; i < 10; i++) for (int j = 0; j < 10; j++) planszastrzalowgracza[i, j] = '.';
+
+                                    while (trwa)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("Strzaly               twoja plansza");
+                                        Console.WriteLine("   A B C D E F G H I J       A B C D E F G H I J");
+                                        for (int i = 0; i < 10; i++)
+                                        {
+                                            Console.Write($"{i + 1,2} ");
+                                            for (int j = 0; j < 10; j++) Console.Write(planszastrzalowgracza[i, j] + " ");
+                                            Console.Write("    ");
+                                            Console.Write($"{i + 1,2} ");
+                                            for (int j = 0; j < 10; j++) Console.Write(plansza[i, j] + " ");
+                                            Console.WriteLine();
+                                        }
+
+                                        Console.WriteLine("\n Teraz ty, podaj cel (np. A1) \n");
+                                        string strzal = Console.ReadLine()!.ToUpper();
+                                        if (strzal.Length >= 2)
+                                        {
+                                            int col = strzal[0] - 'A';
+                                            if (int.TryParse(strzal.Substring(1), out int row))
+                                            {
+                                                row--;
+                                                if (row >= 0 && row < 10 && col >= 0 && col < 10)
+                                                {
+                                                    if (planszakomputera[row, col] == 'S')
+                                                    {
+                                                        Console.WriteLine("trafiles!!!");
+                                                        planszakomputera[row, col] = 'X';
+                                                        planszastrzalowgracza[row, col] = 'X';
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("Spudlowales!");
+                                                        planszastrzalowgracza[row, col] = 'O';
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        if (koniecgryczynie(planszakomputera))
+                                        {
+                                            Console.WriteLine("Gratulacje wygrales !!");
+                                            trwa = false;
+                                            break;
+                                        }
+
+                                        for (int s = 0; s < strzalyilosci; s++)
+                                        {
+                                            kstrzal(plansza);
+                                        }
+
+                                        if (koniecgryczynie(plansza))
+                                        {
+                                            Console.WriteLine("Przegrales, hahah");
+                                            trwa = false;
+                                            break;
+                                        }
+
+                                        Console.WriteLine("\nNaciśnij klawisz aby kontynuowac");
+                                        Console.ReadKey();
+                                    }
+
                                 }
                                     else
                                     {
-                                        Console.WriteLine("Najpierw postaw wszystkie statki -_- ");
+                                        Console.WriteLine(" \n Najpierw postaw wszystkie statki -_- ");
                                         Console.ReadKey();
                                     }
                                     break;
@@ -479,4 +557,43 @@ class Program
         }
         return true;
     }
+
+
+    static void kstrzal (char[,] planszaGracza)
+    {
+        bool kstrzal = false;
+        while (!kstrzal)
+        {
+            int x = statkicomputer.Next(0, 10);
+            int y = statkicomputer.Next(0, 10);
+
+            if (planszaGracza[x, y] != 'X' && planszaGracza[x, y] != 'O')
+            {
+                char kolumna = (char)('A' + y);
+                Console.WriteLine($"Komputer strzela w {kolumna}{x + 1}...");
+
+                if (planszaGracza[x, y] == 'S')
+                {
+                    Console.WriteLine("Komputer trafil");
+                    planszaGracza[x, y] = 'X';
+                }
+                else
+                {
+                    Console.WriteLine("Komputer spudlowal");
+                    planszaGracza[x, y] = 'O';
+                }
+                kstrzal = true;
+            }
+        }
+    }
+
+    static bool koniecgryczynie (char[,] plansza)
+    {
+        foreach (char pole in plansza)
+        {
+            if (pole == 'S') return false; 
+        }
+        return true;
+    }
+
 }

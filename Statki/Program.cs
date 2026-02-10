@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -29,6 +30,7 @@ class Program
                             plansza[i, j] = '.';
 
                     int s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+                    int wszystkies = s1 + s2 + s3 + s4;
 
                     Console.WriteLine("     A B C D E F G H I J");
                     for (int i = 1; i <= 10; i++)
@@ -48,11 +50,13 @@ class Program
                     bool dobrywybor = false;
                     while (!dobrywybor)
                     {
-                        Console.WriteLine("\nWybierz statek który chcesz postawić");
+
+                        Console.WriteLine("\nWybierz statek który chcesz postawić \n");
                         Console.WriteLine("1. Statek 1 polowy");
                         Console.WriteLine("2. Statek 2 polowy");
                         Console.WriteLine("3. Statek 3 polowy");
-                        Console.WriteLine("4. Statek 4 polowy \n");
+                        Console.WriteLine("4. Statek 4 polowy");
+                        Console.WriteLine("\n5. Wybór poziomu \n ");
 
                         string wybor2 = Console.ReadLine()!;
 
@@ -284,6 +288,41 @@ class Program
                                     }
                                 }
                                 break;
+
+                                case "5":
+                                    if (wszystkies == 0)
+                                    {
+                                    Console.Clear();
+                                    Console.WriteLine("Wybierz poziom trudności \n");
+
+                                       Console.WriteLine("1. Łatwy");
+                                       Console.WriteLine("2. Średni");
+                                       Console.WriteLine("3. Miszczu \n");
+                                       string poziomtrudnosci = Console.ReadLine()!;
+                                       switch (poziomtrudnosci)
+                                       {
+                                            case "1":
+                                                Console.WriteLine("Wybrałeś poziom łatwy");
+                                                break;
+                                            case "2":
+                                                Console.WriteLine("Wybrałeś poziom średni");
+                                                break;
+                                            case "3":
+                                                Console.WriteLine("Wybrałeś poziom miszczu");
+                                                break;
+                                            default:
+                                                Console.WriteLine("Można wybrać tylko jedną z podanych opcji!!!!!!!");
+                                                break;
+                                      }
+
+                                }
+                                    else
+                                    {
+                                        Console.WriteLine("Najpierw postaw wszystkie statki -_- ");
+                                        Console.ReadKey();
+                                    }
+                                    break;
+
 
                             default:
                                 Console.Clear();

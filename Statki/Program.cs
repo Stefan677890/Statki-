@@ -28,6 +28,8 @@ class Program
                         for (int j = 0; j < 10; j++)
                             plansza[i, j] = '.';
 
+                    int s1 = 0, s2 = 0, s3 = 0, s4 = 0;
+
                     Console.WriteLine("     A B C D E F G H I J");
                     for (int i = 1; i <= 10; i++)
                     {
@@ -58,6 +60,13 @@ class Program
                         {
                             case "1":
                                 Console.Clear();
+                                if (s1 >= 4)
+                                {
+                                    Console.WriteLine("Nie postawisz wiecej niz 4 statkow 1 polowych");
+                                    Console.WriteLine("Kliknij cos aby wrocic do menu \n");
+                                    Console.ReadKey();
+                                    break;
+                                }
 
                                 Console.WriteLine("     A B C D E F G H I J");
                                 for (int i = 0; i < 10; i++)
@@ -116,11 +125,22 @@ class Program
                                                 }
                                             }
                                         }
+                                        s1 = 4;
                                     }
                                 }
+
                                 break;
 
                             case "2":
+
+                                if (s2 >= 3)
+                                {
+                                    Console.WriteLine("Nie postawisz wiecej niz 4 statkow 1 polowych");
+                                    Console.WriteLine("Kliknij cos aby wrocic do menu \n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+
                                 for (int statki = 1; statki <= 3; statki++)
                                 {
                                     bool poprawnewspolrzedne = false;
@@ -158,11 +178,22 @@ class Program
                                                 else Console.WriteLine("Statki nie mogą się stykać ani wystawać poza plansze!!!");
                                             }
                                         }
+                                s2 = 3;
                                     }
                                 }
                                 break;
 
                             case "3":
+
+                                if (s3 >= 2)
+                                {
+                                    Console.WriteLine("Nie postawisz wiecej niz 4 statkow 1 polowych");
+                                    Console.WriteLine("Kliknij cos aby wrocic do menu \n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+
+
                                 for (int statki = 1; statki <= 2; statki++)
                                 {
                                     bool poprawnewspolrzedne = false;
@@ -200,11 +231,21 @@ class Program
                                                 else Console.WriteLine("Statki nie mogą się stykać ani wystawać poza plansze!!!");
                                             }
                                         }
+                                s3 = 2;
                                     }
                                 }
                                 break;
 
                             case "4":
+
+                                if (s4 >= 1)
+                                {
+                                    Console.WriteLine("Nie postawisz wiecej niz 4 statkow 1 polowych");
+                                    Console.WriteLine("Kliknij cos aby wrocic do menu \n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+
                                 bool poprawnaczworka = false;
                                 while (!poprawnaczworka)
                                 {
@@ -239,6 +280,7 @@ class Program
                                             }
                                             else Console.WriteLine("Statki nie mogą się stykać ani wystawać poza planszę!");
                                         }
+                                s4 = 1;
                                     }
                                 }
                                 break;

@@ -314,7 +314,6 @@ class Program
                             case "5":
                                 if (s1 + s2 + s3 + s4 == 10)
                                 {
-                                    s1 = 0; s2 = 0; s3 = 0; s4 = 0;
                                     Console.Clear();
                                     Console.WriteLine("Gracz 1 zakonczyl rozstawianie teraz pora na gracza nr 2\n");
                                     
@@ -323,17 +322,6 @@ class Program
 
                                     Console.Clear();
                                     Console.WriteLine("Gracz nr 2 zaczyna rozstawiać statki gracz nr 1 ma nie patrzeć!!!");
-
-                                    Console.WriteLine("     A B C D E F G H I J");
-                                    for (int i = 0; i < 10; i++)
-                                    {
-                                        Console.Write($"{i + 1,2} | ");
-                                        for (int j = 0; j < 10; j++)
-                                        {
-                                            Console.Write(plansza[i, j] + " ");
-                                        }
-                                        Console.WriteLine();
-                                    }
 
                                     bool rozstawianiep2 = false;
                                     while (!rozstawianiep2)
@@ -558,7 +546,7 @@ class Program
                                                                     if (poziomo) plansza2[x, y + i] = 'S';
                                                                     else plansza2[x + i, y] = 'S';
                                                                 }
-                                                                poprawnaczworka = true;
+                                                                poprawnaczworka5 = true;
                                                                 Console.Clear();
                                                                 Console.WriteLine("     A B C D E F G H I J");
                                                                 for (int i2 = 0; i2 < 10; i2++)
@@ -579,7 +567,92 @@ class Program
                                                 if (s1 + s2 + s3 + s4 == 10)
                                                 {
                                                     Console.Clear();
-                                                    Console.WriteLine("Gracz 2 zakończył ustawianie statków.");
+                                                    Console.WriteLine("Gracz 2 zakończył ustawianie statków");
+                                                    Console.WriteLine("Nacisnij klawisz aby rozpocząć grę i oddać komputer pierwszemu graczowi");
+                                                    Console.ReadKey();
+
+                                                    bool gratrwa = true;
+                                                    int tura = 1;
+
+                                                    char[,] widok1 = new char[10, 10];
+                                                    char[,] widok2 = new char[10, 10];
+
+                                                    for (int i = 0; i < 10; i++)
+                                                        for (int j = 0; j < 10; j++)
+                                                        {
+                                                            widok1[i, j] = '.';
+                                                            widok2[i, j] = '.';
+                                                        }
+
+                                                    while (gratrwa)
+                                                    {
+                                                        Console.Clear();
+                                                        char[,] planszawroga = (tura == 1) ? plansza2 : plansza;
+                                                        char[,] mojwidok = (tura == 1) ? widok1 : widok2;
+
+                                                        Console.WriteLine($" tura gracza nr {tura}");
+                                                        Console.WriteLine("Twoje strzaly");
+
+                                                        Console.WriteLine("     A B C D E F G H I J");
+                                                        for (int i = 0; i < 10; i++)
+                                                        {
+                                                            Console.Write($"{i + 1,2} | ");
+                                                            for (int j = 0; j < 10; j++) Console.Write(mojwidok[i, j] + " ");
+                                                            Console.WriteLine();
+                                                        }
+
+                                                        Console.WriteLine($"\ngraczu {tura} podaj wspolrzedne (np C5) ");
+                                                        string strzal = Console.ReadLine()!.ToUpper();
+
+                                                        if (strzal.Length >= 2)
+                                                        {
+                                                            int y = strzal[0] - 'A';
+                                                            if (int.TryParse(strzal.Substring(1), out int wiersz))
+                                                            {
+                                                                int x = wiersz - 1;
+
+                                                                if (x >= 0 && x < 10 && y >= 0 && y < 10)
+                                                                {
+                                                                    if (mojwidok[x, y] != '.')
+                                                                    {
+                                                                        Console.WriteLine("Już tam strzelales -_-");
+                                                                        Console.ReadKey();
+                                                                        continue;
+                                                                    }
+
+                                                                    if (planszawroga[x, y] == 'S')
+                                                                    {
+                                                                        Console.WriteLine("trafiony!");
+                                                                        planszawroga[x, y] = 'X';
+                                                                        mojwidok[x, y] = 'X';
+
+                                                                        if (koniecgryczynie(planszawroga))
+                                                                        {
+                                                                            Console.Clear();
+                                                                            Console.WriteLine($"koniec gry! wygral gracz {tura}!");
+                                                                            gratrwa = false;
+                                                                            Console.ReadKey();
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Console.WriteLine("trafiles! strzelasz ponownie. nacisnij klawisz...");
+                                                                            Console.ReadKey();
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        Console.WriteLine("pudlo!");
+                                                                        planszawroga[x, y] = 'O';
+                                                                        mojwidok[x, y] = 'O';
+
+                                                                        tura = (tura == 1) ? 2 : 1;
+                                                                        Console.WriteLine("pudlo! nacisnij klawisz, aby oddac komputer drugiemu graczowi...");
+                                                                        Console.ReadKey();
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                     rozstawianiep2 = true;
                                                 }
                                                 else
